@@ -12,7 +12,8 @@
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "livewire/livewire": "^2.10",
-        "pusher/pusher-php-server": "7.0.2"
+        "pusher/pusher-php-server": "7.0.2",
+        "sensiolabs/ansi-to-html": "^1.2"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

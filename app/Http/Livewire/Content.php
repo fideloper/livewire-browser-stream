@@ -2,21 +2,23 @@
 
 namespace App\Http\Livewire;
 
+use App\DraculaTheme;
 use Illuminate\Support\Facades\Log;
 use Livewire\Component;
+use SensioLabs\AnsiConverter\AnsiToHtmlConverter;
 
 class Content extends Component
 {
     public $rawContent = '';
 
-    public $content = '';
+    public $content = 'waiting...';
 
     protected $listeners = ['echo:content,ContentUpdated' => 'appendContent'];
 
     public function appendContent($event)
     {
         $this->rawContent .= $event['content'];
-        $this->content = $this->rawContent; // TODO: Parse raw content
+        $this->content = (new AnsiToHtmlConverter(new DraculaTheme))->convert($this->rawContent);
     }
 
     public function render()
