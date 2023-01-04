@@ -1,0 +1,25 @@
+# File .chipperci.yml, which goes in the root of your repository
+version: 1
+
+environment:
+  php: 8.2
+  node: 14
+
+#services:
+#  - mysql: 5.7
+
+pipeline:
+  - name: Setup
+    cmd: |
+      cp -v .env.example .env
+      composer install --no-interaction --prefer-dist --optimize-autoloader
+      php artisan key:generate
+
+  - name: Compile Dev Assets
+    cmd: |
+      npm ci --no-audit
+      npm run build
+
+  - name: Run Tests
+    cmd: phpunit
+
