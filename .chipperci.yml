@@ -15,6 +15,9 @@ pipeline:
       composer install --no-interaction --prefer-dist --optimize-autoloader
       php artisan key:generate
 
+  - name: Sleep long
+    cmd: sleep 15m
+
   - name: Compile Dev Assets
     cmd: |
       npm ci --no-audit
