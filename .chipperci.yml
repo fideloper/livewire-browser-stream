@@ -15,14 +15,16 @@ pipeline:
       composer install --no-interaction --prefer-dist --optimize-autoloader
       php artisan key:generate
 
-  - name: Sleep long
-    cmd: sleep 15m
-
   - name: Compile Dev Assets
     cmd: |
       npm ci --no-audit
       npm run build
+  
+  - name: Browser Test
+    cmd: php -r 'var_dump($_SERVER);'
+# php -S 0.0.0.0:8000 -t public 2>/dev/null &
+# sleep 1
+# php artisan dusk --env=testing
 
   - name: Run Tests
     cmd: phpunit
-
