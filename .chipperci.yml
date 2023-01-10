@@ -5,8 +5,8 @@ environment:
   php: 8.2
   node: 14
 
-#services:
-#  - mysql: 5.7
+services:
+  - dusk
 
 pipeline:
   - name: Setup
@@ -21,7 +21,9 @@ pipeline:
       npm run build
   
   - name: Browser Test
-    cmd: php -r 'var_dump($_SERVER);'
+    cmd: | 
+      php -r 'var_dump($_SERVER);'
+      echo "Dusk Service: $SCV_DUSK"
 # php -S 0.0.0.0:8000 -t public 2>/dev/null &
 # sleep 1
 # php artisan dusk --env=testing
