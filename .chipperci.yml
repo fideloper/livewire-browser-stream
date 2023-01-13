@@ -30,6 +30,7 @@ pipeline:
       touch /home/chipper/repository/database/database.sqlite
       php -S 0.0.0.0:8000 -t public 2>/dev/null &
       sleep 2
+      php artisan dusk:chrome-driver 108
       php artisan dusk --env=testing
 
   - name: Run Tests
