@@ -22,18 +22,12 @@ pipeline:
   
   - name: Browser Test
     cmd: | 
-      echo "Dusk Service: $SCV_dusk"
-      echo "Dusk host: $DUSK_HOST"
-      php -r 'var_dump($_SERVER);'; 
       mkdir -p /home/chipper/repository/database
       touch /home/chipper/repository/database/database.sqlite
       php -S [::0]:8000 -t public 2>server.log &
 
       sleep 2
-      cat server.log
-      curl http://$BUILD_HOST:8000
 
-      echo "\n\nfoo bar\n\n"
       php artisan dusk:chrome-driver 108
       php artisan dusk --env=testing
 
