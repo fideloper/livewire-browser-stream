@@ -28,7 +28,11 @@ pipeline:
       mkdir -p /home/chipper/repository/database
       touch /home/chipper/repository/database/database.sqlite
       php -S 0.0.0.0:8000 -t public 2>/dev/null &
+
       sleep 2
+      curl http://$BUILD_HOST:8000
+
+      echo "\n\nfoo bar\n\n"
       php artisan dusk:chrome-driver 108
       php artisan dusk --env=testing
 
