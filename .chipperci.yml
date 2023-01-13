@@ -24,8 +24,7 @@ pipeline:
     cmd: | 
       echo "Dusk Service: $SCV_dusk"
       echo "Dusk host: $DUSK_HOST"
-      #php -r 'var_dump($_SERVER);'; 
-      #php -r 'var_dump($_ENV);'; 
+      php -r 'var_dump($_SERVER);'; 
       mkdir -p /home/chipper/repository/database
       touch /home/chipper/repository/database/database.sqlite
       php -S 0.0.0.0:8000 -t public 2>/dev/null &
