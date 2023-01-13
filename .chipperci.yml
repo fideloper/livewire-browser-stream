@@ -22,6 +22,7 @@ pipeline:
   
   - name: Browser Test
     cmd: | 
+      printenv
       mkdir -p /home/chipper/repository/database
       touch /home/chipper/repository/database/database.sqlite
       php -S [::0]:8000 -t public 2>server.log &
