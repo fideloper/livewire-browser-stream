@@ -23,6 +23,7 @@ pipeline:
   - name: Browser Test
     cmd: | 
       php -r 'var_dump($_SERVER);'
+      printenv
       echo "Dusk Service: $SCV_DUSK"
 # php -S 0.0.0.0:8000 -t public 2>/dev/null &
 # sleep 1
