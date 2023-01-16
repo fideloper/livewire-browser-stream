@@ -29,7 +29,7 @@ pipeline:
 
       sleep 2
 
-      php artisan dusk:chrome-driver 108
+      php artisan dusk:chrome-driver $CHROME_DRIVER
       php artisan dusk --env=testing
 
   - name: Run Tests
