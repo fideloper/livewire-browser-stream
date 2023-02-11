@@ -7,6 +7,7 @@ environment:
 
 services:
   - dusk
+  - mysql:8
 
 pipeline:
   - name: Setup
@@ -19,6 +20,17 @@ pipeline:
     cmd: |
       npm ci --no-audit
       npm run build
+  
+  - name: Install extensions
+    cmd: |
+      printenv
+      cat /etc/hosts
+      echo "pretend we installed something"
+      #wget https://github.com/chipperci/php-extensions/raw/main/8.2/grpc.so
+      #wget https://github.com/chipperci/php-extensions/raw/main/8.2/protobuf.so
+      #mv *.so /usr/lib/php/20220829/
+      #echo "extension=grpc.so" | sudo tee /etc/php/8.2/cli/php.ini
+      #echo "extension=protobuf.so" | sudo tee /etc/php/8.2/cli/php.ini
   
   - name: Browser Test
     cmd: | 
