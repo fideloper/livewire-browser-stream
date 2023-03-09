@@ -4,6 +4,7 @@ version: 1
 environment:
   php: 8.2
   node: 14
+  mariadb: 10.3
 
 services:
   - dusk
