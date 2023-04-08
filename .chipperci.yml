@@ -24,6 +24,7 @@ pipeline:
   
   - name: Install extensions
     cmd: |
+      php --info | grep variables_order
       printenv
       cat /etc/hosts
       echo "pretend we installed something"
